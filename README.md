@@ -84,14 +84,6 @@ fun_fact: "I debug with console.log and I'm not ashamed 😄"
 
 ---
 
-## 🏆 GitHub Trophies
-
-<div align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=Rehansanjay&theme=algolia&no-frame=true&no-bg=true&column=7&margin-w=10" width="100%" alt="Trophies" />
-</div>
-
----
-
 ## 📊 GitHub Stats
 
 <div align="center">
