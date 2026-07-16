@@ -138,6 +138,18 @@ fun_fact: "I debug with console.log and I'm not ashamed 😄"
 
 ---
 
+## 🎯 Open Source Focus & Roadmap
+
+<div align="center">
+
+Actively researching and contributing to high-impact open-source YC startups across **AI Agents**, **DevTools**, and **Workflow Engines**.
+
+[![Open Source Target List](https://img.shields.io/badge/📖_View_YC_Open_Source_Target_Guide-OPEN__SOURCE__TARGETS.md-00d4ff?style=for-the-badge&logo=github)](./OPEN_SOURCE_TARGETS.md)
+
+</div>
+
+---
+
 ## 🤝 Let's Connect
 
 <div align="center">
