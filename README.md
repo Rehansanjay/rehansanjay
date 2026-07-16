@@ -149,7 +149,7 @@ If you're building something exciting, let's connect and create something impact
 <br/>
 
 <a href="https://rehansanjay.com"><img src="https://img.shields.io/badge/🌐_Portfolio-rehansanjay.com-00d4ff?style=for-the-badge" alt="Portfolio" /></a>
-<a href="mailto:rehansanjay@example.com"><img src="https://img.shields.io/badge/📧_Email-Get_In_Touch-7c3aed?style=for-the-badge" alt="Email" /></a>
+<a href="mailto:rehansanjay28@gmail.com"><img src="https://img.shields.io/badge/📧_Email-Get_In_Touch-7c3aed?style=for-the-badge" alt="Email" /></a>
 
 <br/><br/>
 
