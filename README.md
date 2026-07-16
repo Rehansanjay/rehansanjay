@@ -128,11 +128,11 @@ fun_fact: "I debug with console.log and I'm not ashamed 😄"
 
 <div align="center">
 
-| Project | Description |
-|---------|-------------|
-| 🪸 [**Coral Reef Inspector**](https://github.com/Rehansanjay/coral-reef-inspector) | AI-powered coral reef health analysis tool |
-| 🌐 [**My Portfolio**](https://github.com/Rehansanjay/my-portfolio) | Personal portfolio website |
-| 🧪 [**Playground**](https://github.com/Rehansanjay/playground) | Coding sandbox for experimenting with new tech |
+| Project | Description | Tech Stack |
+|---------|-------------|------------|
+| 🪸 [**Coral Reef Inspector**](https://github.com/Rehansanjay/coral-reef-inspector) | AI-powered coral reef health analysis tool | Python, Computer Vision, PyTorch |
+| 🌐 [**My Portfolio**](https://github.com/Rehansanjay/my-portfolio) | Personal portfolio website | Next.js, React, TailwindCSS |
+| 🧪 [**Playground**](https://github.com/Rehansanjay/playground) | Coding sandbox for experimenting with new tech | TypeScript, Node.js, Python |
 
 </div>
 
