@@ -65,7 +65,7 @@ Week 1: Initial PR ──► Weeks 2-4: Deep Issues ──► Weeks 4-6: CTO Out
     trust fast
 ```
 
-### Phased Steps:
+### 📌 Phased Steps:
 1. **Week 1 (Low-Friction Start)**:
    - Join project Discord/Slack.
    - Run setup locally.
