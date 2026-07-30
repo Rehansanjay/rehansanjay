@@ -1,6 +1,6 @@
 # 🚀 YC-Backed Open Source Contribution Targets & Hiring Playbook
 
-> **Live GitHub & Hiring Data** *(Verified July 19, 2026)*  
+> **Live GitHub & Hiring Data** *(Verified July 30, 2026)*  
 > A curated research guide identifying high-ROI YC open-source projects where core contribution leads directly to software engineering hires.
 
 ---
