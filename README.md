@@ -1,174 +1,53 @@
-<div align="center">
+## Rehan Sanjay Venkatesan
 
-<!-- Animated Header -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:00d4ff,100:7c3aed&height=220&section=header&text=Rehan%20Sanjay&fontSize=60&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Full%20Stack%20Developer%20•%20AI%20Engineer&descSize=20&descAlignY=55&descAlign=50" width="100%" />
+Voice AI and backend engineer. I work on the frameworks voice agents run on, and on the failures that only show up on a real phone call.
 
-<!-- Typing SVG -->
-<a href="https://git.io/typing-svg">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=00D4FF&center=true&vCenter=true&repeat=true&width=600&height=45&lines=Building+production-grade+AI+products+%F0%9F%A4%96;Crafting+scalable+web+applications+%F0%9F%9A%80;Open+Source+Contributor+%E2%9C%A8" alt="Typing SVG" />
-</a>
+**Ten fixes merged upstream** — eight into [`livekit/agents`](https://github.com/livekit/agents), plus [`pipecat`](https://github.com/pipecat-ai/pipecat) and [`jambonz`](https://github.com/jambonz/jambonz-feature-server). Over the last 90 days I've been the **second most active outside contributor to livekit/agents**.
 
-<br/>
-
-<!-- Social Badges -->
-[![Portfolio](https://img.shields.io/badge/Portfolio-rehansanjay.com-00d4ff?style=for-the-badge&logo=google-chrome&logoColor=white)](https://rehansanjay.com)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/rehansanjay)
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-171515?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Rehansanjay)
-[![Profile Views](https://komarev.com/ghpvc/?username=Rehansanjay&style=for-the-badge&color=7c3aed&label=PROFILE+VIEWS)](https://github.com/Rehansanjay)
-
-</div>
+📍 Chennai, India · 2026 CS graduate · open to a first engineering role
+🔗 [Portfolio](https://rehansanjay-portfolio.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/rehansanjay-venkatesan-449925285/)
 
 ---
 
-## 🧑‍💻 About Me
+### Merged upstream
 
-<img align="right" src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" width="300" alt="Coding GIF" />
+**In the framework itself**
 
-```yaml
-name: Rehan Sanjay
-role: Full Stack Developer & AI Engineer
-education: Computer Science Student
-location: India 🇮🇳
+- [livekit/agents#7139](https://github.com/livekit/agents/pull/7139) — `ConnectionPool.invalidate()` closed sockets that were still streaming, and a handshake in flight escaped invalidation entirely and stayed reusable with stale settings. **Eleven plugins** call it from `update_options`, so one change to the primitive repaired all of them. Reviewed line by line by a maintainer.
+- [#7054](https://github.com/livekit/agents/pull/7054) — found a whole bug class, fixed all fifteen instances across library, examples and tests, and got ruff's `RUF006` **enabled in their CI** so dangling tasks cannot come back.
 
-currently_building:
-  - Production-ready AI-powered applications
-  - Scalable full-stack web platforms
+**Provider plugins** — the same stale-handshake bug, found by grepping siblings for the shape
 
-interests:
-  - System Design & Architecture
-  - AI Agents & Intelligent Automation
-  - Cloud & DevOps
-  - Open Source Contributions
+- [#7132](https://github.com/livekit/agents/pull/7132) asyncai · [#7133](https://github.com/livekit/agents/pull/7133) neuphonic · [#7140](https://github.com/livekit/agents/pull/7140) cartesia, where the API version was also sent in a header that disagreed with the body it was built for
 
-fun_fact: "I debug with console.log and I'm not ashamed 😄"
-```
+**Lifecycle and cleanup**
 
-<br clear="both"/>
+- [#7023](https://github.com/livekit/agents/pull/7023) — an STT connection pool that stayed open after shutdown
+- [#7012](https://github.com/livekit/agents/pull/7012) — per-stream HTTP sessions leaking through a `WeakSet`
+- [#7050](https://github.com/livekit/agents/pull/7050) — a discarded prewarm task rebuilding a pool *after* close
+- [pipecat#5464](https://github.com/pipecat-ai/pipecat/pull/5464) — a TTS service wrote model, voice and language only into its websocket init message, so a runtime change was stored, warned about, and silently never sent
+- [jambonz#1585](https://github.com/jambonz/jambonz-feature-server/pull/1585) — a TTS `stream_resumed` event sent to a different hook path than the one it resumed
+
+Open PRs across `livekit/agents`, `pipecat`, `jambonz`, `drachtio-srf` and `drizzle-orm`.
 
 ---
 
-## 🛠️ Tech Stack
+### How I find them
 
-<div align="center">
+Take a bug fixed in one place, then grep every sibling for the same shape — it is almost never alone. Then verify by mutation: revert the fix and confirm the new test fails. A test that passes both ways has told me nothing.
 
-### 💬 Languages
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
-
-### 🌐 Frontend
-![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
-
-### ⚙️ Backend & Databases
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
-![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
-![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-
-### 🤖 AI & Machine Learning
-![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
-![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
-![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)
-![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
-![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
-![Keras](https://img.shields.io/badge/Keras-D00000?style=for-the-badge&logo=keras&logoColor=white)
-
-### 🧰 Tools & Platforms
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
-![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)
-![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
-![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
-
-</div>
+Most of it started with debugging my own production calls: audio arriving out of order, sessions torn down mid-sentence, a connection quietly serving the wrong voice after a settings change.
 
 ---
 
-## 📊 GitHub Stats
+### Building
 
-<div align="center">
+**Atlas** — an outbound voice agent on Twilio Media Streams and Deepgram. Barge-in, a call-session state machine, outcome classification, dialling constrained to legal calling hours, and SMS/WhatsApp on one session model. ~31,000 lines, solo.
 
-<img width="60%" src="https://streak-stats.demolab.com?user=Rehansanjay&theme=tokyonight-duo&hide_border=true&background=0d1117&stroke=00d4ff&ring=7c3aed&fire=00d4ff&currStreakLabel=00d4ff&sideLabels=c9d1d9&currStreakNum=ffffff&sideNums=ffffff&dates=555555" alt="GitHub Streak" />
-
-</div>
+**[InvoiceCheck.in](https://invoicecheck.in)** — GST invoice verification, live with paying users. An 11-point compliance check run before marketplaces reject an invoice, OCR auto-fill, Razorpay pay-per-check.
 
 ---
 
-## 📈 Contribution Graph
+### Stack
 
-<div align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Rehansanjay&bg_color=0d1117&color=00d4ff&line=7c3aed&point=00d4ff&area=true&area_color=7c3aed&hide_border=true&custom_title=Contribution%20Graph" width="100%" alt="Contribution Graph" />
-</div>
-
----
-
-## 🐍 Watch the Snake Eat My Contributions
-
-<div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Rehansanjay/Rehansanjay/output/github-snake-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Rehansanjay/Rehansanjay/output/github-snake.svg" />
-    <img alt="github-snake" src="https://raw.githubusercontent.com/Rehansanjay/Rehansanjay/output/github-snake-dark.svg" width="100%" />
-  </picture>
-</div>
-
----
-
-## 📌 Featured Projects
-
-<div align="center">
-
-| Project | Description | Tech Stack |
-|---------|-------------|------------|
-| 🪸 [**Coral Reef Inspector**](https://github.com/Rehansanjay/coral-reef-inspector) | AI-powered coral reef health analysis tool | Python, Computer Vision, PyTorch |
-| 🌐 [**My Portfolio**](https://github.com/Rehansanjay/my-portfolio) | Personal portfolio website | Next.js, React, TailwindCSS |
-| 🧪 [**Playground**](https://github.com/Rehansanjay/playground) | Coding sandbox for experimenting with new tech | TypeScript, Node.js, Python |
-
-</div>
-
----
-
-## 🎯 Open Source Focus & Roadmap
-
-<div align="center">
-
-Actively researching and contributing to high-impact open-source YC startups across **AI Agents**, **DevTools**, and **Workflow Engines**.
-
-[![Open Source Target List](https://img.shields.io/badge/📖_View_YC_Open_Source_Target_Guide-OPEN__SOURCE__TARGETS.md-00d4ff?style=for-the-badge&logo=github)](./OPEN_SOURCE_TARGETS.md)
-
-</div>
-
----
-
-## 🤝 Let's Connect
-
-<div align="center">
-
-I'm always open to discussing **Full Stack Development**, **AI & ML**, **Open Source**, **Startups**, and **Collaboration**.
-
-If you're building something exciting, let's connect and create something impactful together! 🚀
-
-<br/>
-
-<a href="https://rehansanjay.com"><img src="https://img.shields.io/badge/🌐_Portfolio-rehansanjay.com-00d4ff?style=for-the-badge" alt="Portfolio" /></a>
-<a href="mailto:rehansanjay28@gmail.com"><img src="https://img.shields.io/badge/📧_Email-Get_In_Touch-7c3aed?style=for-the-badge" alt="Email" /></a>
-
-<br/><br/>
-
-### 💡 *"Great software is built through curiosity, consistency, and continuous improvement."*
-
-<br/>
-
-<img src="https://raw.githubusercontent.com/Trilokia/Trilokia/379277808c61ef204768a61bbc5d25bc7798ccf1/bottom_header.svg" width="100%" alt="Footer Wave" />
-
-</div>
+`Python` `asyncio` `pytest` · `LiveKit Agents` `Pipecat` `jambonz` `drachtio` · `Twilio Programmable Voice & Media Streams` `SIP` `WebRTC` `Deepgram` · `TypeScript` `NestJS` `Next.js` · `Postgres` `Prisma` `Redis` `BullMQ` · `Docker` `CI/CD`
