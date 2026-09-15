@@ -2,7 +2,7 @@
 
 Voice AI and backend engineer. I work on the frameworks voice agents run on, and on the failures that only show up on a real phone call.
 
-**Ten fixes merged upstream** — eight into [`livekit/agents`](https://github.com/livekit/agents), plus [`pipecat`](https://github.com/pipecat-ai/pipecat) and [`jambonz`](https://github.com/jambonz/jambonz-feature-server). Over the last 90 days I've been the **second most active outside contributor to livekit/agents**.
+**Twelve fixes merged upstream** — eight into [`livekit/agents`](https://github.com/livekit/agents), plus [`pipecat`](https://github.com/pipecat-ai/pipecat), [`jambonz`](https://github.com/jambonz/jambonz-feature-server) and [`drachtio`](https://github.com/drachtio/drachtio-srf).
 
 📍 Chennai, India · 2026 CS graduate · open to a first engineering role
 🔗 [Portfolio](https://rehansanjay-portfolio.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/rehansanjay-venkatesan-449925285/)
@@ -26,9 +26,14 @@ Voice AI and backend engineer. I work on the frameworks voice agents run on, and
 - [#7012](https://github.com/livekit/agents/pull/7012) — per-stream HTTP sessions leaking through a `WeakSet`
 - [#7050](https://github.com/livekit/agents/pull/7050) — a discarded prewarm task rebuilding a pool *after* close
 - [pipecat#5464](https://github.com/pipecat-ai/pipecat/pull/5464) — a TTS service wrote model, voice and language only into its websocket init message, so a runtime change was stored, warned about, and silently never sent
-- [jambonz#1585](https://github.com/jambonz/jambonz-feature-server/pull/1585) — a TTS `stream_resumed` event sent to a different hook path than the one it resumed
 
-Open PRs across `livekit/agents`, `pipecat`, `jambonz`, `drachtio-srf` and `drizzle-orm`.
+**SIP and telephony**
+
+- [jambonz#1585](https://github.com/jambonz/jambonz-feature-server/pull/1585) — a TTS `stream_resumed` event sent to a different hook path than the one it resumed
+- [jambonz#1584](https://github.com/jambonz/jambonz-feature-server/pull/1584) — a call transferred between feature servers re-sent trying, ringing and in-progress statuses the application had already received
+- [drachtio-srf#240](https://github.com/drachtio/drachtio-srf/pull/240) — proxied responses built their header strip list from the request option, so the wrong headers were stripped and forwarded
+
+Open PRs across `livekit/agents`, `pipecat`, `litellm` and `drizzle-orm`.
 
 ---
 
@@ -36,7 +41,7 @@ Open PRs across `livekit/agents`, `pipecat`, `jambonz`, `drachtio-srf` and `driz
 
 Take a bug fixed in one place, then grep every sibling for the same shape — it is almost never alone. Then verify by mutation: revert the fix and confirm the new test fails. A test that passes both ways has told me nothing.
 
-Most of it started with debugging my own production calls: audio arriving out of order, sessions torn down mid-sentence, a connection quietly serving the wrong voice after a settings change.
+Most of it started with debugging real calls on my own voice agent: audio arriving out of order, sessions torn down mid-sentence, a connection quietly serving the wrong voice after a settings change.
 
 ---
 
@@ -44,7 +49,7 @@ Most of it started with debugging my own production calls: audio arriving out of
 
 **Atlas** — an outbound voice agent on Twilio Media Streams and Deepgram. Barge-in, a call-session state machine, outcome classification, dialling constrained to legal calling hours, and SMS/WhatsApp on one session model. ~31,000 lines, solo.
 
-**[InvoiceCheck.in](https://invoicecheck.in)** — GST invoice verification, live with paying users. An 11-point compliance check run before marketplaces reject an invoice, OCR auto-fill, Razorpay pay-per-check.
+**[InvoiceCheck.in](https://invoicecheck.in)** — GST invoice verification, live. An 11-point compliance check run before marketplaces reject an invoice, OCR auto-fill, Razorpay pay-per-check.
 
 ---
 
