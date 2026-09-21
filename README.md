@@ -2,7 +2,7 @@
 
 Voice AI and backend engineer. I work on the frameworks voice agents run on, and on the failures that only show up on a real phone call.
 
-**Twelve fixes merged upstream** — eight into [`livekit/agents`](https://github.com/livekit/agents), plus [`pipecat`](https://github.com/pipecat-ai/pipecat), [`jambonz`](https://github.com/jambonz/jambonz-feature-server) and [`drachtio`](https://github.com/drachtio/drachtio-srf).
+**Fifteen fixes merged upstream** — ten into [`livekit/agents`](https://github.com/livekit/agents), plus [`pipecat`](https://github.com/pipecat-ai/pipecat), [`jambonz`](https://github.com/jambonz/jambonz-feature-server) and [`drachtio`](https://github.com/drachtio/drachtio-srf).
 
 📍 Chennai, India · 2026 CS graduate · open to a first engineering role
 🔗 [Portfolio](https://rehansanjay-portfolio.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/rehansanjay-venkatesan-449925285/)
@@ -25,6 +25,9 @@ Voice AI and backend engineer. I work on the frameworks voice agents run on, and
 - [#7023](https://github.com/livekit/agents/pull/7023) — an STT connection pool that stayed open after shutdown
 - [#7012](https://github.com/livekit/agents/pull/7012) — per-stream HTTP sessions leaking through a `WeakSet`
 - [#7050](https://github.com/livekit/agents/pull/7050) — a discarded prewarm task rebuilding a pool *after* close
+- [#7341](https://github.com/livekit/agents/pull/7341) — LiveAvatar built its own `aiohttp` session instead of the job's shared one, so the session outlived the job that owned it
+- [#7237](https://github.com/livekit/agents/pull/7237) — respeecher retired whole connection pools on a model change, leaving idle sockets for the old model open and orphaning a stream's socket in a pool nothing closes
+- [pipecat#5632](https://github.com/pipecat-ai/pipecat/pull/5632) — an STT service rebuilt its config on a settings change, but the running gRPC stream took its config once at open, so a mid-session language change kept transcribing with the old one
 - [pipecat#5464](https://github.com/pipecat-ai/pipecat/pull/5464) — a TTS service wrote model, voice and language only into its websocket init message, so a runtime change was stored, warned about, and silently never sent
 
 **SIP and telephony**
@@ -33,7 +36,9 @@ Voice AI and backend engineer. I work on the frameworks voice agents run on, and
 - [jambonz#1584](https://github.com/jambonz/jambonz-feature-server/pull/1584) — a call transferred between feature servers re-sent trying, ringing and in-progress statuses the application had already received
 - [drachtio-srf#240](https://github.com/drachtio/drachtio-srf/pull/240) — proxied responses built their header strip list from the request option, so the wrong headers were stripped and forwarded
 
-Open PRs across `livekit/agents`, `pipecat`, `litellm` and `drizzle-orm`.
+Open PRs across `livekit/agents`, `pipecat`, `litellm` and `drizzle-orm`, plus fixes sent to nine voice-AI vendors' own SDKs — Gnani, Simplismart, Rumik, Respeecher, SonexLabs, Replicate, Supertonic, Maya Research and Cosmo.
+
+**[pipecat-plugin-health](https://github.com/Rehansanjay/pipecat-plugin-health)** — a nightly check that installs every community Pipecat plugin in the docs against the latest release and against `main`, so a breaking change shows up before users hit it. It found that 19 of 56 could not be used with pipecat 1.11; seven broke on one renamed name, and each of those now has a fix.
 
 ---
 
