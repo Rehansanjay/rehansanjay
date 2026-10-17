@@ -2,7 +2,7 @@
 
 Voice AI and backend engineer. I work on the frameworks voice agents run on, and on the failures that only show up on a real phone call.
 
-**Twenty-one fixes merged upstream** — twelve into [`livekit/agents`](https://github.com/livekit/agents), plus [`pipecat`](https://github.com/pipecat-ai/pipecat), [`jambonz`](https://github.com/jambonz/jambonz-feature-server), [`drachtio`](https://github.com/drachtio/drachtio-srf) and [`cosmo`](https://github.com/socratic-ai/cosmo-ai).
+**Twenty-three fixes merged upstream, across seven repositories** — eleven into [`livekit/agents`](https://github.com/livekit/agents), four into [`cosmo`](https://github.com/socratic-ai/cosmo-ai), two each into [`pipecat`](https://github.com/pipecat-ai/pipecat), [`jambonz`](https://github.com/jambonz/jambonz-feature-server) and [`SitePing`](https://github.com/NeosiaNexus/SitePing), and one each into [`drachtio`](https://github.com/drachtio/drachtio-srf) and [`twenty`](https://github.com/twentyhq/twenty).
 
 📍 Chennai, India · 2026 CS graduate · open to a first engineering role
 🔗 [Portfolio](https://rehansanjay-portfolio.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/rehansanjay-venkatesan-449925285/)
