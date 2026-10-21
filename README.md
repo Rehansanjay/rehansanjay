@@ -49,6 +49,10 @@ It also taught me that a released wheel answers the user's question and not the 
 
 It overturned three of my own published claims. I had written off baseten, fireworksai and gradium as already safe because each wraps its read in `asyncio.wait_for(..., timeout=5)` — but the handler just `continue`s, so it polls rather than bounding anything, and all three sat at 75 seconds. That is what the measurement was for.
 
+**[livekit-tts-halfopen](https://github.com/Rehansanjay/livekit-tts-halfopen)** — the same question for the twenty streaming TTS plugins, where a dead socket means the agent goes mute rather than deaf, which a caller reads as a dropped line. Nine fail over inside the timeout they were given, three eventually, and four never notice at all.
+
+The answer turned out to be the opposite one. I expected `heartbeat=` to decide it again and started by scanning for it — 18 of the 20 pass none. That predicts almost nothing: what separates the groups is whether a read timeout reaches `ws.receive()`. `fishaudio` has a heartbeat and no read timeout, so it takes 46.8 s where `cartesia` takes 10.0 s with no heartbeat at all. The workload is why: a quiet caller is normal for STT, so a read timeout is the wrong instrument there, while a TTS stream handed text that returns nothing is never normal. The four that never notice are fixed in [#8035](https://github.com/livekit/agents/pull/8035).
+
 ---
 
 ### How I find them
