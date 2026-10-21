@@ -2,7 +2,7 @@
 
 Voice AI and backend engineer. I work on the frameworks voice agents run on, and on the failures that only show up on a real phone call.
 
-**Twenty-three fixes merged upstream, across seven repositories** — eleven into [`livekit/agents`](https://github.com/livekit/agents), four into [`cosmo`](https://github.com/socratic-ai/cosmo-ai), two each into [`pipecat`](https://github.com/pipecat-ai/pipecat), [`jambonz`](https://github.com/jambonz/jambonz-feature-server) and [`SitePing`](https://github.com/NeosiaNexus/SitePing), and one each into [`drachtio`](https://github.com/drachtio/drachtio-srf) and [`twenty`](https://github.com/twentyhq/twenty).
+**Twenty-four fixes merged upstream, across seven repositories** — eleven into [`livekit/agents`](https://github.com/livekit/agents), four into [`cosmo`](https://github.com/socratic-ai/cosmo-ai), three into [`pipecat`](https://github.com/pipecat-ai/pipecat), two each into [`jambonz`](https://github.com/jambonz/jambonz-feature-server) and [`SitePing`](https://github.com/NeosiaNexus/SitePing), and one each into [`drachtio`](https://github.com/drachtio/drachtio-srf) and [`twenty`](https://github.com/twentyhq/twenty).
 
 📍 Chennai, India · 2026 CS graduate · open to a first engineering role
 🔗 [Portfolio](https://rehansanjay-portfolio.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/rehansanjay-venkatesan-449925285/)
@@ -29,6 +29,7 @@ Voice AI and backend engineer. I work on the frameworks voice agents run on, and
 - [#7237](https://github.com/livekit/agents/pull/7237) — respeecher retired whole connection pools on a model change, leaving idle sockets for the old model open and orphaning a stream's socket in a pool nothing closes
 - [pipecat#5632](https://github.com/pipecat-ai/pipecat/pull/5632) — an STT service rebuilt its config on a settings change, but the running gRPC stream took its config once at open, so a mid-session language change kept transcribing with the old one
 - [pipecat#5464](https://github.com/pipecat-ai/pipecat/pull/5464) — a TTS service wrote model, voice and language only into its websocket init message, so a runtime change was stored, warned about, and silently never sent
+- [pipecat#5762](https://github.com/pipecat-ai/pipecat/pull/5762) — an image service left its GenAI client open on shutdown. It had sat unmergeable for five weeks after upstream rewrote the request path underneath it; I rebased onto the rewrite, kept their version and re-applied the lifecycle hooks, and it merged within a day
 
 **SIP and telephony**
 
@@ -38,7 +39,15 @@ Voice AI and backend engineer. I work on the frameworks voice agents run on, and
 
 Open PRs across `livekit/agents`, `pipecat`, `litellm` and `drizzle-orm`, plus fixes sent to nine voice-AI vendors' own SDKs — Gnani, Simplismart, Rumik, Respeecher, SonexLabs, Replicate, Supertonic, Maya Research and Cosmo.
 
-**[pipecat-plugin-health](https://github.com/Rehansanjay/pipecat-plugin-health)** — a nightly check that installs every community Pipecat plugin in the docs against the latest release and against `main`, so a breaking change shows up before users hit it. It found that 19 of 56 could not be used with pipecat 1.11; seven broke on one renamed name, and each of those now has a fix.
+### Measured, not argued
+
+**[pipecat-plugin-health](https://github.com/Rehansanjay/pipecat-plugin-health)** — a nightly check that installs every community Pipecat plugin in the docs, imports it and constructs every service class it defines, against the latest release and against `main`, so a breaking change shows up before users hit it. It now tracks 67 plugins: as of 21 October, against pipecat 1.13, nine are broken, three cannot be installed at all and seven are pinned to an older pipecat. Seven broke on a single renamed import, and each of those has a fix open or merged.
+
+It also taught me that a released wheel answers the user's question and not the maintainer's: it called one maintainer's plugin broken for two weeks after they had fixed it, because PyPI still served the old version. It now builds from each plugin's own repository too, guarded so that a wrongly resolved repository reports `unknown` rather than crediting a fix to the wrong codebase — [write-up](https://github.com/Rehansanjay/pipecat-plugin-health/blob/main/reports/2026-10-18-the-released-wheel-is-not-the-truth.md).
+
+**[livekit-stt-halfopen](https://github.com/Rehansanjay/livekit-stt-halfopen)** — how long each of the nineteen streaming STT plugins in `livekit/agents` takes to notice a websocket that went half-open: the provider vanished without a FIN or an RST, so nothing arrives and nothing fails. Three fail over in about 46 seconds. Two detect it and tell no one — one reconnects into the same dead state every 46 seconds forever, which looks healthy and leaves the caller unheard for the whole call. Eight never notice.
+
+It overturned three of my own published claims. I had written off baseten, fireworksai and gradium as already safe because each wraps its read in `asyncio.wait_for(..., timeout=5)` — but the handler just `continue`s, so it polls rather than bounding anything, and all three sat at 75 seconds. That is what the measurement was for.
 
 ---
 
