@@ -2,7 +2,7 @@
 
 Voice AI and backend engineer. I work on the frameworks voice agents run on, and on the failures that only show up on a real phone call.
 
-**Twenty-four fixes merged upstream, across seven repositories** — eleven into [`livekit/agents`](https://github.com/livekit/agents), four into [`cosmo`](https://github.com/socratic-ai/cosmo-ai), three into [`pipecat`](https://github.com/pipecat-ai/pipecat), two each into [`jambonz`](https://github.com/jambonz/jambonz-feature-server) and [`SitePing`](https://github.com/NeosiaNexus/SitePing), and one each into [`drachtio`](https://github.com/drachtio/drachtio-srf) and [`twenty`](https://github.com/twentyhq/twenty).
+**Thirty fixes merged upstream, across nine repositories** — twelve into [`livekit/agents`](https://github.com/livekit/agents), four each into [`cosmo`](https://github.com/socratic-ai/cosmo-ai) and [`pipecat-gnani`](https://github.com/Gnani-AI-Mintlify/pipecat-gnani), three into [`pipecat`](https://github.com/pipecat-ai/pipecat), two each into [`jambonz`](https://github.com/jambonz/jambonz-feature-server) and [`SitePing`](https://github.com/NeosiaNexus/SitePing), and one each into [`drachtio`](https://github.com/drachtio/drachtio-srf), [`pipecat-respeecher`](https://github.com/respeecher/pipecat-respeecher) and [`twenty`](https://github.com/twentyhq/twenty).
 
 📍 Chennai, India · 2026 CS graduate · open to a first engineering role
 🔗 [Portfolio](https://rehansanjay-portfolio.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/rehansanjay-venkatesan-449925285/)
@@ -27,6 +27,7 @@ Voice AI and backend engineer. I work on the frameworks voice agents run on, and
 - [#7050](https://github.com/livekit/agents/pull/7050) — a discarded prewarm task rebuilding a pool *after* close
 - [#7341](https://github.com/livekit/agents/pull/7341) — LiveAvatar built its own `aiohttp` session instead of the job's shared one, so the session outlived the job that owned it
 - [#7237](https://github.com/livekit/agents/pull/7237) — respeecher retired whole connection pools on a model change, leaving idle sockets for the old model open and orphaning a stream's socket in a pool nothing closes
+- [#7052](https://github.com/livekit/agents/pull/7052) — a realtime session tracked and cancelled four background tasks and discarded two more, which the loop holds only weakly. Collected early, a `generate_reply(user_input=...)` waits forever; surviving past `aclose()`, it sends on a stream that is gone
 - [pipecat#5632](https://github.com/pipecat-ai/pipecat/pull/5632) — an STT service rebuilt its config on a settings change, but the running gRPC stream took its config once at open, so a mid-session language change kept transcribing with the old one
 - [pipecat#5464](https://github.com/pipecat-ai/pipecat/pull/5464) — a TTS service wrote model, voice and language only into its websocket init message, so a runtime change was stored, warned about, and silently never sent
 - [pipecat#5762](https://github.com/pipecat-ai/pipecat/pull/5762) — an image service left its GenAI client open on shutdown. It had sat unmergeable for five weeks after upstream rewrote the request path underneath it; I rebased onto the rewrite, kept their version and re-applied the lifecycle hooks, and it merged within a day
@@ -37,7 +38,12 @@ Voice AI and backend engineer. I work on the frameworks voice agents run on, and
 - [jambonz#1584](https://github.com/jambonz/jambonz-feature-server/pull/1584) — a call transferred between feature servers re-sent trying, ringing and in-progress statuses the application had already received
 - [drachtio-srf#240](https://github.com/drachtio/drachtio-srf/pull/240) — proxied responses built their header strip list from the request option, so the wrong headers were stripped and forwarded
 
-Open PRs across `livekit/agents`, `pipecat`, `litellm` and `drizzle-orm`, plus fixes sent to nine voice-AI vendors' own SDKs — Gnani, Simplismart, Rumik, Respeecher, SonexLabs, Replicate, Supertonic, Maya Research and Cosmo.
+**In vendors' own SDKs** — the plugin health check finds these, then I send the fix
+
+- [`pipecat-gnani`](https://github.com/Gnani-AI-Mintlify/pipecat-gnani) — four merged: a renamed import that broke the package outright, a TTS websocket that never reconnected after an interruption, STT sockets leaked on failed handshakes, and support for two newer models
+- [`pipecat-respeecher`](https://github.com/respeecher/pipecat-respeecher) — the renamed-import break
+
+Open PRs across `livekit/agents`, `pipecat`, `litellm` and `drizzle-orm`, plus fixes still open with Simplismart, Rumik, SonexLabs, Replicate, Supertonic, Maya Research and Cosmo.
 
 ### Measured, not argued
 
