@@ -4,8 +4,6 @@ Voice AI and backend engineer. I work on the frameworks voice agents run on, and
 
 **Thirty-one fixes merged upstream, across nine repositories** — twelve into [`livekit/agents`](https://github.com/livekit/agents), four each into [`cosmo`](https://github.com/socratic-ai/cosmo-ai) and [`pipecat-gnani`](https://github.com/Gnani-AI-Mintlify/pipecat-gnani), four into [`pipecat`](https://github.com/pipecat-ai/pipecat), two each into [`jambonz`](https://github.com/jambonz/jambonz-feature-server) and [`SitePing`](https://github.com/NeosiaNexus/SitePing), and one each into [`drachtio`](https://github.com/drachtio/drachtio-srf), [`pipecat-respeecher`](https://github.com/respeecher/pipecat-respeecher) and [`twenty`](https://github.com/twentyhq/twenty).
 
-jambonz's maintainer **paid me to build its Pipecat serializer** — [pipecat#6573](https://github.com/pipecat-ai/pipecat/pull/6573), merged into `main` on 5 November — so a jambonz call can drive a Pipecat agent over the `listen` verb. jambonz now sits in Pipecat's telephony serializers next to Twilio, Telnyx, Plivo, Exotel, Genesys and Vonage, where it was the one missing. A Daily maintainer tested it through a live Twilio number the night it merged.
-
 📍 Chennai, India · 2026 CS graduate · available for paid contract work, and open to a first engineering role
 🔗 [Portfolio](https://rehansanjay-portfolio.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/rehansanjay-venkatesan-449925285/)
 
@@ -37,6 +35,7 @@ jambonz's maintainer **paid me to build its Pipecat serializer** — [pipecat#65
 
 **SIP and telephony**
 
+- [pipecat#6573](https://github.com/pipecat-ai/pipecat/pull/6573) — Pipecat's telephony serializers covered Twilio, Telnyx, Plivo, Exotel, Genesys and Vonage, and not jambonz, so a jambonz call could not drive a Pipecat agent at all. The `listen` verb negotiates sample rate and mix type per call and states them in a JSON preamble before any audio, so the serializer reads them off the connection rather than taking them as config, and refuses a `mixType` it cannot play rather than returning audio at the wrong speed. jambonz commissioned it.
 - [jambonz#1585](https://github.com/jambonz/jambonz-feature-server/pull/1585) — a TTS `stream_resumed` event sent to a different hook path than the one it resumed
 - [jambonz#1584](https://github.com/jambonz/jambonz-feature-server/pull/1584) — a call transferred between feature servers re-sent trying, ringing and in-progress statuses the application had already received
 - [drachtio-srf#240](https://github.com/drachtio/drachtio-srf/pull/240) — proxied responses built their header strip list from the request option, so the wrong headers were stripped and forwarded
