@@ -2,9 +2,11 @@
 
 Voice AI and backend engineer. I work on the frameworks voice agents run on, and on the failures that only show up on a real phone call.
 
-**Thirty fixes merged upstream, across nine repositories** — twelve into [`livekit/agents`](https://github.com/livekit/agents), four each into [`cosmo`](https://github.com/socratic-ai/cosmo-ai) and [`pipecat-gnani`](https://github.com/Gnani-AI-Mintlify/pipecat-gnani), three into [`pipecat`](https://github.com/pipecat-ai/pipecat), two each into [`jambonz`](https://github.com/jambonz/jambonz-feature-server) and [`SitePing`](https://github.com/NeosiaNexus/SitePing), and one each into [`drachtio`](https://github.com/drachtio/drachtio-srf), [`pipecat-respeecher`](https://github.com/respeecher/pipecat-respeecher) and [`twenty`](https://github.com/twentyhq/twenty).
+**Thirty-one fixes merged upstream, across nine repositories** — twelve into [`livekit/agents`](https://github.com/livekit/agents), four each into [`cosmo`](https://github.com/socratic-ai/cosmo-ai) and [`pipecat-gnani`](https://github.com/Gnani-AI-Mintlify/pipecat-gnani), four into [`pipecat`](https://github.com/pipecat-ai/pipecat), two each into [`jambonz`](https://github.com/jambonz/jambonz-feature-server) and [`SitePing`](https://github.com/NeosiaNexus/SitePing), and one each into [`drachtio`](https://github.com/drachtio/drachtio-srf), [`pipecat-respeecher`](https://github.com/respeecher/pipecat-respeecher) and [`twenty`](https://github.com/twentyhq/twenty).
 
-📍 Chennai, India · 2026 CS graduate · open to a first engineering role
+jambonz's maintainer **paid me to build its Pipecat serializer** — [pipecat#6573](https://github.com/pipecat-ai/pipecat/pull/6573), merged into `main` on 5 November — so a jambonz call can drive a Pipecat agent over the `listen` verb. jambonz now sits in Pipecat's telephony serializers next to Twilio, Telnyx, Plivo, Exotel, Genesys and Vonage, where it was the one missing. A Daily maintainer tested it through a live Twilio number the night it merged.
+
+📍 Chennai, India · 2026 CS graduate · available for paid contract work, and open to a first engineering role
 🔗 [Portfolio](https://rehansanjay-portfolio.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/rehansanjay-venkatesan-449925285/)
 
 ---
@@ -31,6 +33,7 @@ Voice AI and backend engineer. I work on the frameworks voice agents run on, and
 - [pipecat#5632](https://github.com/pipecat-ai/pipecat/pull/5632) — an STT service rebuilt its config on a settings change, but the running gRPC stream took its config once at open, so a mid-session language change kept transcribing with the old one
 - [pipecat#5464](https://github.com/pipecat-ai/pipecat/pull/5464) — a TTS service wrote model, voice and language only into its websocket init message, so a runtime change was stored, warned about, and silently never sent
 - [pipecat#5762](https://github.com/pipecat-ai/pipecat/pull/5762) — an image service left its GenAI client open on shutdown. It had sat unmergeable for five weeks after upstream rewrote the request path underneath it; I rebased onto the rewrite, kept their version and re-applied the lifecycle hooks, and it merged within a day
+- [pipecat#6521](https://github.com/pipecat-ai/pipecat/pull/6521) — a telephony serializer raised on any transport message that was not a dict, so one malformed frame from the provider took the call down instead of being ignored
 
 **SIP and telephony**
 
@@ -47,7 +50,7 @@ Open PRs across `livekit/agents`, `pipecat`, `litellm` and `drizzle-orm`, plus f
 
 ### Measured, not argued
 
-**[pipecat-plugin-health](https://github.com/Rehansanjay/pipecat-plugin-health)** — a nightly check that installs every community Pipecat plugin in the docs, imports it and constructs every service class it defines, against the latest release and against `main`, so a breaking change shows up before users hit it. It now tracks 73 plugins: as of 3 November, against pipecat 1.15, six are broken, three cannot be installed at all and eight are pinned to an older pipecat. Four of the six broke on the same renamed import, and every broken plugin has a fix open or merged. The two vendors who took the fix, Gnani and Respeecher, both read green today; the rest have sat open since September, which is its own finding about where a fix is worth sending.
+**[pipecat-plugin-health](https://github.com/Rehansanjay/pipecat-plugin-health)** — a nightly check that installs every community Pipecat plugin in the docs, imports it and constructs every service class it defines, against the latest release and against `main`, so a breaking change shows up before users hit it. It now tracks 75 plugins: as of 6 November, against pipecat 1.15, six are broken, three cannot be installed at all and eight are pinned to an older pipecat. Four of the six broke on the same renamed import, and every broken plugin has a fix open or merged. The two vendors who took the fix, Gnani and Respeecher, both read green today; the rest have sat open since September, which is its own finding about where a fix is worth sending.
 
 It also taught me that a released wheel answers the user's question and not the maintainer's: it called one maintainer's plugin broken for two weeks after they had fixed it, because PyPI still served the old version. It now builds from each plugin's own repository too, guarded so that a wrongly resolved repository reports `unknown` rather than crediting a fix to the wrong codebase — [write-up](https://github.com/Rehansanjay/pipecat-plugin-health/blob/main/reports/2026-10-18-the-released-wheel-is-not-the-truth.md).
 
