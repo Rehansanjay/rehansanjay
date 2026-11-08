@@ -49,6 +49,8 @@ Open PRs across `livekit/agents`, `pipecat`, `litellm` and `drizzle-orm`, plus f
 
 ### Measured, not argued
 
+All five, with the headline numbers on one page: **[rehansanjay-portfolio.vercel.app/measurements](https://rehansanjay-portfolio.vercel.app/measurements)**.
+
 **[pipecat-plugin-health](https://github.com/Rehansanjay/pipecat-plugin-health)** — a nightly check that installs every community Pipecat plugin in the docs, imports it and constructs every service class it defines, against the latest release and against `main`, so a breaking change shows up before users hit it. It now tracks 75 plugins: as of 6 November, against pipecat 1.15, six are broken, three cannot be installed at all and eight are pinned to an older pipecat. Four of the six broke on the same renamed import, and every broken plugin has a fix open or merged. The two vendors who took the fix, Gnani and Respeecher, both read green today; the rest have sat open since September, which is its own finding about where a fix is worth sending.
 
 It also taught me that a released wheel answers the user's question and not the maintainer's: it called one maintainer's plugin broken for two weeks after they had fixed it, because PyPI still served the old version. It now builds from each plugin's own repository too, guarded so that a wrongly resolved repository reports `unknown` rather than crediting a fix to the wrong codebase — [write-up](https://github.com/Rehansanjay/pipecat-plugin-health/blob/main/reports/2026-10-18-the-released-wheel-is-not-the-truth.md).
