@@ -47,6 +47,15 @@ Voice AI and backend engineer. I work on the frameworks voice agents run on, and
 
 Open PRs across `livekit/agents`, `pipecat`, `litellm` and `drizzle-orm`, plus fixes still open with Simplismart, Rumik, SonexLabs, Replicate, Supertonic, Maya Research and Cosmo.
 
+### Telephony integrations
+
+Phone providers Pipecat could not talk to, each built from the provider's documented protocol:
+
+- **[pipecat-enablex](https://github.com/Rehansanjay/pipecat-enablex)**: EnableX Voice Media Streaming, **tested on live calls** from an EnableX number to a mobile. Streaming, transcription, replies and hang-up all work as documented. Barge-in works too: asked to count to thirty and told to stop at five, the bot stopped at six. On an interruption it also resets its resampler, because otherwise the last ~100 ms of the reply that was cut off plays at the start of the next one.
+- **[pipecat-46elks](https://github.com/Rehansanjay/pipecat-46elks)**: 46elks Realtime Voice, in all four audio formats. It handles the `interrupt`/`sending` handshake, without which the bot goes silent for good after its first interruption. Tested against the documented protocol; a live call is next.
+
+---
+
 ### Measured, not argued
 
 All five, with the headline numbers on one page: **[rehansanjay-portfolio.vercel.app/measurements](https://rehansanjay-portfolio.vercel.app/measurements)**.
