@@ -4,7 +4,7 @@ Voice AI and backend engineer. I work on the frameworks voice agents run on, and
 
 **Thirty-five fixes merged upstream, across eleven repositories** — twelve into [`livekit/agents`](https://github.com/livekit/agents), four each into [`cosmo`](https://github.com/socratic-ai/cosmo-ai) and [`pipecat-gnani`](https://github.com/Gnani-AI-Mintlify/pipecat-gnani), four into [`pipecat`](https://github.com/pipecat-ai/pipecat), three into [`drachtio`](https://github.com/drachtio/drachtio-srf), two each into [`jambonz`](https://github.com/jambonz/jambonz-feature-server) and [`SitePing`](https://github.com/NeosiaNexus/SitePing), one each into [`pipecat-respeecher`](https://github.com/respeecher/pipecat-respeecher) and [`twenty`](https://github.com/twentyhq/twenty), and one each into the [Varis SDK](https://github.com/usevaris/sdk-ts) and [CLI](https://github.com/usevaris/cli).
 
-📍 Chennai, India · 2026 CS graduate · available for paid contract work, and open to a first engineering role
+📍 Chennai, India · Software Engineer, Voice AI
 🔗 [Portfolio](https://rehansanjay-portfolio.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/rehansanjay-venkatesan-449925285/)
 
 ---
